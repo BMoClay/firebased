@@ -38,8 +38,12 @@ body {
 
 /* === Typography === */
 
-h1 {
+h1, h2 {
     margin: 0;
+}
+
+h2 {
+    font-weight: 500;
 }
 
 .app-title {
@@ -76,6 +80,10 @@ section {
     border: var(--border-width) solid var(--dark-color);
 }
 
+.user-section h2 {
+    font-size: 1.2em;
+}
+
 /* === Nav === */
 
 nav {
@@ -102,7 +110,7 @@ nav {
 .app-container {
     display: flex;
     flex-direction: column;
-    gap: 3em;
+    gap: 1em;
 }
 
 /* === Common for elements === */
@@ -201,6 +209,10 @@ button:hover {
     width: 1.875em;
 }
 
+.icon-img-btn {
+    width: 1.875em;
+}
+
 .icon-img-btn:hover {
     filter: invert(0.5);
 }
@@ -215,3 +227,11 @@ button:hover {
     display: none;
     margin: 0;
 }
+
+
+
+
+
+
+
+

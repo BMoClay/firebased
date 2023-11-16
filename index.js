@@ -39,7 +39,11 @@ const createAccountButtonEl = document.getElementById("create-account-btn")
 const signOutButtonEl = document.getElementById("sign-out-btn")
 
 const userProfilePictureEl = document.getElementById("user-profile-picture")
+const userGreetingEl = document.getElementById("user-greeting")
 
+const displayNameInputEl = document.getElementById("display-name-input")
+const photoURLInputEl = document.getElementById("photo-url-input")
+const updateProfileButtonEl = document.getElementById("update-profile-btn")
 /* == UI - Event Listeners == */
 
 signInWithGoogleButtonEl.addEventListener("click", authSignInWithGoogle)
@@ -49,12 +53,15 @@ createAccountButtonEl.addEventListener("click", authCreateAccountWithEmail)
 
 signOutButtonEl.addEventListener("click", authSignOut)
 
+updateProfileButtonEl.addEventListener("click", authUpdateProfile)
+
 /* === Main Code === */
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
         showLoggedInView()
         showProfilePicture(userProfilePictureEl, user)
+        showUserGreeting(userGreetingEl, user)
     } else {
         showLoggedOutView()
     }
@@ -108,6 +115,10 @@ function authSignOut() {
         })
 }
 
+function authUpdateProfile() {
+    
+}
+
 /* == Functions - UI Functions == */
 
 function showLoggedOutView() {
@@ -145,5 +156,17 @@ function showProfilePicture(imgElement, user) {
        imgElement.src = photoURL
     } else {
         imgElement.src = "assets/images/Shower Self Portraits1418 copy-min.jpeg"
+    }
+}
+
+function showUserGreeting(element, user) {
+    const displayName = user.displayName
+
+    if (displayName) {
+        const userFirstName = displayName.split(" ")[0]
+
+        element.textContent = `Hey ${userFirstName}, how are you?`
+    } else {
+        element.textContent = `Hey friend, how are you?`
     }
 }
