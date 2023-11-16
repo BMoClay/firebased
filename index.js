@@ -1,6 +1,20 @@
 /* === Imports === */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js"
 
 /* === Firebase Setup === */
+const firebaseConfig = {
+    apiKey: "AIzaSyCJWb4TNbLYdHchVSpDzXZheVnPiwouBbU",
+    authDomain: "moody-4a467.firebaseapp.com",
+    projectId: "moody-4a467",
+    storageBucket: "moody-4a467.appspot.com",
+    messagingSenderId: "327471086703",
+    appId: "1:327471086703:web:c6f4f26b3f8944d0fe219a"
+  };
+
+const app = initializeApp(firebaseConfig)
+
+/* Challenge: Console log the projectId by using app.options.projectId */
+console.log(app)
 
 /* === UI === */
 
@@ -63,3 +77,6 @@ function showElement(element) {
 function hideElement(element) {
     element.style.display = "none"
 }
+
+
+
