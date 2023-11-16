@@ -38,6 +38,8 @@ const createAccountButtonEl = document.getElementById("create-account-btn")
 
 const signOutButtonEl = document.getElementById("sign-out-btn")
 
+const userProfilePictureEl = document.getElementById("user-profile-picture")
+
 /* == UI - Event Listeners == */
 
 signInWithGoogleButtonEl.addEventListener("click", authSignInWithGoogle)
@@ -52,6 +54,7 @@ signOutButtonEl.addEventListener("click", authSignOut)
 onAuthStateChanged(auth, (user) => {
     if (user) {
         showLoggedInView()
+        showProfilePicture(userProfilePictureEl, user)
     } else {
         showLoggedOutView()
     }
@@ -132,4 +135,15 @@ function clearInputField(field) {
 function clearAuthFields() {
 	clearInputField(emailInputEl)
 	clearInputField(passwordInputEl)
+}
+
+function showProfilePicture(imgElement, user) {
+    
+    const photoURL = user.photoURL
+
+    if (photoURL) {
+       imgElement.src = photoURL
+    } else {
+        imgElement.src = "assets/images/Shower Self Portraits1418 copy-min.jpeg"
+    }
 }
