@@ -62,14 +62,12 @@ onAuthStateChanged(auth, (user) => {
 /* = Functions - Firebase - Authentication = */
 
 function authSignInWithGoogle() {
-
     signInWithPopup(auth, provider)
         .then((result) => {
-           console.log("signed in w google")
+            console.log("Signed in with Google")
         }).catch((error) => {
-            console.error(error.mesage)
-        });
-
+            console.error(error.message)
+        })
 }
 
 function authSignInWithEmail() {
@@ -77,6 +75,7 @@ function authSignInWithEmail() {
     const password = passwordInputEl.value
     
     signInWithEmailAndPassword(auth, email, password)
+        console.log("wokr")
         .then((userCredential) => {
             clearAuthFields()
         })
@@ -84,7 +83,6 @@ function authSignInWithEmail() {
             console.error(error.message)
         })
 }
-
 
 function authCreateAccountWithEmail() {
     const email = emailInputEl.value
@@ -95,7 +93,7 @@ function authCreateAccountWithEmail() {
             clearAuthFields()
         })
         .catch((error) => {
-            console.error(error.message)
+            console.error(error.message) 
         })
 }
 
@@ -104,7 +102,7 @@ function authSignOut() {
         .then(() => {
         }).catch((error) => {
             console.error(error.message)
-        });
+        })
 }
 
 /* == Functions - UI Functions == */
@@ -120,7 +118,7 @@ function showLoggedInView() {
 }
 
 function showView(view) {
-    view.style.display = "flex"
+    view.style.display = "flex" 
 }
 
 function hideView(view) {
@@ -135,4 +133,3 @@ function clearAuthFields() {
 	clearInputField(emailInputEl)
 	clearInputField(passwordInputEl)
 }
-
