@@ -5,7 +5,8 @@ import { getAuth,
     signOut, 
     onAuthStateChanged,
     GoogleAuthProvider,
-    signInWithPopup } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"
+    signInWithPopup,
+    updateProfile } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"
 
 /* === Firebase Setup === */
 const firebaseConfig = {
@@ -115,9 +116,19 @@ function authSignOut() {
         })
 }
 
-function authUpdateProfile() {
-    
-}
+// function authUpdateProfile() {
+//     const newDisplayName = displayNameInputEl.value
+//     const newPhotoURL = photoURLInputEl.value
+
+//     updateProfile(auth.currentUser, {
+//         displayName: newDisplayName,
+//         photoURL: newPhotoURL
+//     }).then(() => {
+//         console.log("op updated")
+//     }).catch((error) => {
+//         console.error(error.message)
+//     })
+// }
 
 /* == Functions - UI Functions == */
 
