@@ -213,6 +213,10 @@ button:hover {
     width: 1.875em;
 }
 
+.icon-img-btn {
+    width: 1.875em;
+}
+
 .icon-img-btn:hover {
     filter: invert(0.5);
 }

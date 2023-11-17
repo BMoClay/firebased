@@ -5,22 +5,22 @@ import { getAuth,
     signOut, 
     onAuthStateChanged,
     GoogleAuthProvider,
-    signInWithPopup,
-    updateProfile } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"
+    signInWithPopup } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"
 
-/* === Firebase Setup === */
 const firebaseConfig = {
-    apiKey: "AIzaSyCJWb4TNbLYdHchVSpDzXZheVnPiwouBbU",
-    authDomain: "moody-4a467.firebaseapp.com",
-    projectId: "moody-4a467",
-    storageBucket: "moody-4a467.appspot.com",
-    messagingSenderId: "327471086703",
-    appId: "1:327471086703:web:c6f4f26b3f8944d0fe219a"
+    apiKey: "AIzaSyDyRJa-0-F05apyE-z3iiHNxM_1J6yeRXY",
+    authDomain: "moody-25584.firebaseapp.com",
+    projectId: "moody-25584",
+    storageBucket: "moody-25584.appspot.com",
+    messagingSenderId: "672771816098",
+    appId: "1:672771816098:web:e9e9aacae45f8265e235fb"
   };
 
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+const db = getFirestore(app)
 
 /* === UI === */
 
@@ -30,31 +30,26 @@ const viewLoggedOut = document.getElementById("logged-out-view")
 const viewLoggedIn = document.getElementById("logged-in-view")
 
 const signInWithGoogleButtonEl = document.getElementById("sign-in-with-google-btn")
-
 const emailInputEl = document.getElementById("email-input")
 const passwordInputEl = document.getElementById("password-input")
-
 const signInButtonEl = document.getElementById("sign-in-btn")
 const createAccountButtonEl = document.getElementById("create-account-btn")
-
 const signOutButtonEl = document.getElementById("sign-out-btn")
-
 const userProfilePictureEl = document.getElementById("user-profile-picture")
 const userGreetingEl = document.getElementById("user-greeting")
 
-const displayNameInputEl = document.getElementById("display-name-input")
-const photoURLInputEl = document.getElementById("photo-url-input")
-const updateProfileButtonEl = document.getElementById("update-profile-btn")
+// const displayNameInputEl = document.getElementById("display-name-input")
+// const photoURLInputEl = document.getElementById("photo-url-input")
+// const updateProfileButtonEl = document.getElementById("update-profile-btn")
+
 /* == UI - Event Listeners == */
 
 signInWithGoogleButtonEl.addEventListener("click", authSignInWithGoogle)
 
 signInButtonEl.addEventListener("click", authSignInWithEmail)
 createAccountButtonEl.addEventListener("click", authCreateAccountWithEmail)
-
 signOutButtonEl.addEventListener("click", authSignOut)
-
-updateProfileButtonEl.addEventListener("click", authUpdateProfile)
+// updateProfileButtonEl.addEventListener("click", authUpdateProfile)
 
 /* === Main Code === */
 
@@ -86,7 +81,6 @@ function authSignInWithEmail() {
     const password = passwordInputEl.value
     
     signInWithEmailAndPassword(auth, email, password)
-        console.log("wokr")
         .then((userCredential) => {
             clearAuthFields()
         })
@@ -160,7 +154,6 @@ function clearAuthFields() {
 }
 
 function showProfilePicture(imgElement, user) {
-    
     const photoURL = user.photoURL
 
     if (photoURL) {
@@ -172,10 +165,10 @@ function showProfilePicture(imgElement, user) {
 
 function showUserGreeting(element, user) {
     const displayName = user.displayName
-
+    
     if (displayName) {
         const userFirstName = displayName.split(" ")[0]
-
+        
         element.textContent = `Hey ${userFirstName}, how are you?`
     } else {
         element.textContent = `Hey friend, how are you?`
